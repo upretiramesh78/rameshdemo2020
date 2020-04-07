@@ -15,4 +15,4 @@ phases:
     - mv target/demo-0.0.1-SNAPSHOT ./
 artifacts:
   files:
-    - deploy/**/*
+    - demo-0.0.1-SNAPSHOT/**/*
