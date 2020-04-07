@@ -27,7 +27,7 @@ public class DemoApplication {
 				
 				Person pr1 = new Person();
 				pr.setId("RA2346");
-				pr.setName("Gopal");
+				pr.setName("Gopal Ganesh");
 						personRepo.put(pr.getId(), pr);			
 	}
 
