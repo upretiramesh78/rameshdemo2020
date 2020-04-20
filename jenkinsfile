@@ -18,7 +18,7 @@ def jdk = tool name: 'java8'
     // Clone repo
 	git branch: 'master', 
 	credentialsId: 'github', 
-	url: 'https://github.com/upretiramesh78/my-app-ramesh'
+	url: 'https://github.com/upretiramesh78/rameshdemo2020/'
    
    }
    
