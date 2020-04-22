@@ -1,4 +1,5 @@
 node {
+    def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
@@ -7,7 +8,7 @@ node {
       }
    
    stage('Build & Compile') {    
-   sh 'mvn clean package'
+    sh '${mvn} clean package'
    }
    
    
