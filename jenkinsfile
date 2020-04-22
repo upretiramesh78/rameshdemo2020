@@ -22,12 +22,7 @@ def jdk = tool name: 'java8'
    
    }
    
-  
-      
-   
-   
-	
-   stage('Mvn Package'){
+  stage('Mvn Package'){
 	   // Build using maven
 	   
 	   sh "${mvn} clean package"
