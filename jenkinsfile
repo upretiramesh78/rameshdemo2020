@@ -8,7 +8,7 @@ node {
       }
    
 stage('Build & Compile') {    
-  sh 'mvn clean package'
+  sh '$mvn clean package'
    }
 
  
