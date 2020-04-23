@@ -12,11 +12,12 @@ stage('Build & Compile') {
    }
 
  
-  stage('Deploy to Tomcat'){     
-         bat 'move target/demo-0.0.1-SNAPSHOT.war C:/Tomcat9.0/webapps/demo-0.0.1-SNAPSHOT.war'
+  stage('Deploy to Tomcat'){
       
+      sshagent(['tomcat-dev']) {
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.29.242:/opt/tomcat8/webapps/'
+      }
    }
-   
    
 
    
