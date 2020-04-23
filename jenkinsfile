@@ -7,11 +7,9 @@ node {
 	url: 'https://github.com/upretiramesh78/rameshdemo2020/'
       }
    
- steps {
-            withMaven(maven : 'apache-maven-3.6.1') {
-                bat'mvn clean compile'
-            }
-        }
-   
+stage('Build & Compile') {    
+  bat "${mvn} clean package"
+   }
+
    
 }
