@@ -20,7 +20,7 @@ stage('Build & Compile') {
 
  
  stage('Deploy Dev'){
-	   sh 'mv target/demo-0.0.1-SNAPSHOT.war target/demo-0.0.1-SNAPSHOT.war' 
+	  // sh 'mv target/demo-0.0.1-SNAPSHOT.war target/demo-0.0.1-SNAPSHOT.war' 
 	   
        sshagent(['AWS']) {
 			sh "${stopTomcat}"
