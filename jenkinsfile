@@ -1,5 +1,11 @@
 node {
     def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
+    def tomcatIp = '13.234.76.19'
+   def tomcatUser = 'ec2-user'
+   def stopTomcat = "ssh ${tomcatUser}@${tomcatIp} /opt/tomcat9/bin/shutdown.sh"
+   def startTomcat = "ssh ${tomcatUser}@${tomcatIp} /opt/tomcat9/bin/startup.sh"
+   def copyWar = "scp -o StrictHostKeyChecking=no target/demo-0.0.1-SNAPSHOT.war ${tomcatUser}@${tomcatIp}:/opt/tomcat9/webapps/"
+
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
@@ -13,11 +19,14 @@ stage('Build & Compile') {
    }
 
  
-  stage('Deploy to Tomcat'){
-      
-      sshagent(['AWS']) {
-         bat 'scp -o StrictHostKeyChecking=no target/demo-0.0.1-SNAPSHOT.war ec2-user@13.234.76.19:/opt/tomcat9/webapps/'
-      }
+ stage('Deploy Dev'){
+	   sh 'mv target/demo-0.0.1-SNAPSHOT.war target/demo-0.0.1-SNAPSHOT.war' 
+	   
+       sshagent(['AWS']) {
+			sh "${stopTomcat}"
+			sh "${copyWar}"
+			sh "${startTomcat}"
+	   }
    }
    
 
