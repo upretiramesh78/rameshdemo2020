@@ -11,7 +11,11 @@ stage('Build & Compile') {
   bat "${mvn} clean package"
    }
 
-stage('Deploy') { 
- bat "copy target/*.war C:\Tomcat9.0\webapps\*.war"
+ 
+  stage('Deploy to Tomcat'){     
+         bat 'copy target/*.war C:/Tomcat9.0/webapps/*.war'
+      
+   }
+
    
 }
