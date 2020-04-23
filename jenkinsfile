@@ -13,9 +13,11 @@ stage('Build & Compile') {
 
  
   stage('Deploy to Tomcat'){     
-         bat 'copy target/*.war C:/Tomcat9.0/webapps/*.war'
+         bat 'move target/demo-0.0.1-SNAPSHOT.war C:/Tomcat9.0/webapps/demo-0.0.1-SNAPSHOT.war'
       
    }
+   
+   
 
    
 }
