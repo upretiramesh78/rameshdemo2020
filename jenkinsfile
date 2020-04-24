@@ -27,6 +27,7 @@ stage('Build & Compile') {
 			chmod +x /opt/tomcat9/webapps/
 			sh "${copyWar}"
 			//sh "${startTomcat}"
+			}
 	   }
    }
    
