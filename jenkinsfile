@@ -22,7 +22,7 @@ stage('Build & Compile') {
    
      stage("deploy-dev"){
             steps{
-                sshagent(['AWS'])  {
+                sshagent(['sshagentaws'])  {
                 sh """
                     scp -o StrictHostKeyChecking=no target/demo-0.0.1-SNAPSHOT.war  ec2-user@13.233.80.63:/home/ec2-user/opt/Tomcat9.0/webapps/
                     
