@@ -17,22 +17,28 @@ stage('Build & Compile') {
    def mvnHome =  tool name: 'maven3', type: 'maven'   
       bat "${mvnHome}/bin/mvn package"
    }
+   
+   
+   
+     stage("deploy-dev"){
+            steps{
+                sshagent(['AWS'])  {
+                sh """
+                    scp -o StrictHostKeyChecking=no target/demo-0.0.1-SNAPSHOT.war  ec2-user@13.233.80.63:/home/ec2-user/opt/Tomcat9.0/webapps/
+                    
+                    ssh ec2-user@13.233.80.63 /home/ec2-user/opt/Tomcat9.0/bin/shutdown.sh
+                    
+                    ssh ec2-user@13.233.80.63 /home/ec2-user/opt/Tomcat9.0/bin/startup.sh
+                
+                """
+            }
+            
+            }
+        }
+    }
 
  
- stage('Deploy Dev'){
-	  // sh 'mv target/demo-0.0.1-SNAPSHOT.war target/demo-0.0.1-SNAPSHOT.war' 
-	  //sh 'chmod 400 Mumbai_1.pem' 
-       sshagent(['AWS']) {
-			//sh "${stopTomcat}"
-			sh """
-			chmod +x /home/ec2-user/opt/tomcat9/webapps
-			"${copyWar}"
-			//sh "${startTomcat}"
-			"""
 
-			}
-	  
-   }
    
 
    
