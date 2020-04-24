@@ -25,7 +25,7 @@ stage('Build & Compile') {
        sshagent(['AWS']) {
 			//sh "${stopTomcat}"
 			sh """
-			chmod +x /opt/tomcat9/webapps/
+			chmod +x /home/ec2-user/opt/tomcat9/webapps
 			"${copyWar}"
 			//sh "${startTomcat}"
 			"""
