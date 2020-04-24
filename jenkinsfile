@@ -23,9 +23,9 @@ stage('Build & Compile') {
 	  // sh 'mv target/demo-0.0.1-SNAPSHOT.war target/demo-0.0.1-SNAPSHOT.war' 
 	   
        sshagent(['AWS']) {
-			sh "${stopTomcat}"
+			//sh "${stopTomcat}"
 			sh "${copyWar}"
-			sh "${startTomcat}"
+			//sh "${startTomcat}"
 	   }
    }
    
