@@ -1,15 +1,10 @@
 pipeline{
-    agent any
-    
-    environment{
-        PATH = "/opt/maven3/bin:$PATH"
-    }
     stages{
      stage('SCM Checkout'){
-     steps{
+          steps{
             git credentialsId: 'github', url: 'https://github.com/upretiramesh78/rameshdemo2020'
             }
-      
+       }
    
 	stage('Build & Compile') {  
 	    steps{
