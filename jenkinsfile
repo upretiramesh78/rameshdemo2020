@@ -24,11 +24,14 @@ stage('Build & Compile') {
 	  //sh 'chmod 400 Mumbai_1.pem' 
        sshagent(['AWS']) {
 			//sh "${stopTomcat}"
+			sh """
 			chmod +x /opt/tomcat9/webapps/
-			sh "${copyWar}"
+			"${copyWar}"
 			//sh "${startTomcat}"
+			"""
+
 			}
-	   }
+	  
    }
    
 
