@@ -1,11 +1,6 @@
-node {
-    def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
-    def tomcatIp = '13.234.76.19'
-   def tomcatUser = 'ec2-user'
-   def stopTomcat = "ssh ${tomcatUser}@${tomcatIp} /opt/tomcat9/bin/shutdown.sh"
-   def startTomcat = "ssh ${tomcatUser}@${tomcatIp} /opt/tomcat9/bin/startup.sh"
-   def copyWar = "scp -o StrictHostKeyChecking=no target/demo-0.0.1-SNAPSHOT.war ${tomcatUser}@${tomcatIp}:/opt/tomcat9/webapps/"
-
+pipeline{
+   
+ stages{
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
@@ -31,11 +26,9 @@ stage('Build & Compile') {
                     ssh ec2-user@13.233.80.63 /home/ec2-user/opt/Tomcat9.0/bin/startup.sh
                 
                 """
-            }
+             }
             
             }
-        
-
-   
-}
+        }
+    }
 }
