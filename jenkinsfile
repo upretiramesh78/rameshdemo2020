@@ -1,18 +1,22 @@
 pipeline{
+    agent any
+    
+    environment{
+        PATH = "/opt/maven3/bin:$PATH"
+    }
+    stages{
+     stage('SCM Checkout'){
+     steps{
+            git credentialsId: 'github', url: 'https://github.com/upretiramesh78/rameshdemo2020'
+            }
+      
    
- stages{
-   stage('SCM Checkout'){
-    // Clone repo
-	git branch: 'master', 
-	credentialsId: 'github', 
-	url: 'https://github.com/upretiramesh78/rameshdemo2020/'
-      }
-   
-stage('Build & Compile') {    
-   def mvnHome =  tool name: 'maven3', type: 'maven'   
-      bat "${mvnHome}/bin/mvn package"
-   }
-   
+	stage('Build & Compile') {  
+	    steps{
+	   def mvnHome =  tool name: 'maven3', type: 'maven'   
+	      bat "${mvnHome}/bin/mvn package"
+	   }
+         }
    
    
      stage("deploy-dev"){
