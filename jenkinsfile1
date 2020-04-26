@@ -9,8 +9,8 @@ node{
    }
    stage('Deploy to Tomcat'){
       
-     sshagent(['aws-tomcat-2504']) {
-      bat 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@52.66.248.78:/opt/Tomcat9.0/webapps/'
+     sshagent(['sshagentaws']) {
+      bat 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@13.127.135.115:/opt/Tomcat9.0/webapps/'
       }
 
    }
