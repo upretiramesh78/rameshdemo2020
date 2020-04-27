@@ -38,7 +38,7 @@ public class DemoApplication {
 	
 		@RequestMapping("/")
 	public String hello() {
-		return "Alok Vanaras";
+		return "Jitesh Kumar Vanarasi";
 	}
 	
 	@RequestMapping(value="/persons",method= RequestMethod.GET)
