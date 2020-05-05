@@ -10,9 +10,9 @@ node{
    stage('Deploy to Tomcat'){
       
      sshagent(['sshagentaws']) {
-      ssh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@13.233.41.110:/home/ec2-user/opt/Tomcat9.0/webapps/'
-       //ssh 'ec2-user@13.233.41.110 /home/ec2-user/opt/Tomcat9.0/bin/shutdown.sh'
-      ssh 'ec2-user@13.233.41.110 /home/ec2-user/opt/Tomcat9.0/bin/startup.sh'
+      ssh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.11.89:/home/ec2-user/opt/Tomcat9.0/webapps/'
+       //ssh 'ec2-user@172.31.11.89 /home/ec2-user/opt/Tomcat9.0/bin/shutdown.sh'
+      ssh 'ec2-user@172.31.11.89 /home/ec2-user/opt/Tomcat9.0/bin/startup.sh'
       }
 
    }
